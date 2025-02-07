@@ -1,0 +1,18 @@
+triggers:
+- description: null
+  envs: []
+  last_enabled_at: 2025-02-01 10:22:49.323719
+  name: Run training pipeline once
+  pipeline_uuid: training_models
+  schedule_interval: '@once'
+  schedule_type: time
+  settings: null
+  sla: null
+  start_time: 2025-01-31 09:12:00
+  status: inactive
+  token: d15d488a880545a3a9900ed933070727
+  variables:
+    export_data: 'no'
+    selected_models:
+    - lasso
+    - knn

@@ -1,0 +1,237 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: markdown
+  name: Instructions
+  retry_config: null
+  status: updated
+  timeout: null
+  type: markdown
+  upstream_blocks: []
+  uuid: instructions
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dataset_url: nancyalaswad90/diamonds-prices
+    download_dir: training/
+    key: 04d7f003142f6e627439760f1a63649d
+    username: farahmasri
+  downstream_blocks:
+  - preprocessing_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: loading_data
+  retry_config: {}
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: loading_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - lasso_trainer
+  - knn_trainer
+  - rf_trainer
+  - dt_trainer
+  - ridgee_trainer
+  - load_intopostgres
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: preprocessing_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - loading_data
+  uuid: preprocessing_data
+- all_upstream_blocks_executed: true
+  color: pink
+  configuration: {}
+  downstream_blocks:
+  - lasso_trainer
+  - knn_trainer
+  - rf_trainer
+  - dt_trainer
+  - ridgee_trainer
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: model_selection
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks: []
+  uuid: model_selection
+- all_upstream_blocks_executed: true
+  color: teal
+  configuration: {}
+  downstream_blocks:
+  - final_model
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: lasso_trainer
+  retry_config: null
+  status: updated
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - preprocessing_data
+  - model_selection
+  uuid: lasso_trainer
+- all_upstream_blocks_executed: true
+  color: teal
+  configuration: {}
+  downstream_blocks:
+  - final_model
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: knn_trainer
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - preprocessing_data
+  - model_selection
+  uuid: knn_trainer
+- all_upstream_blocks_executed: true
+  color: teal
+  configuration: {}
+  downstream_blocks:
+  - final_model
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: rf_trainer
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - preprocessing_data
+  - model_selection
+  uuid: rf_trainer
+- all_upstream_blocks_executed: true
+  color: teal
+  configuration: {}
+  downstream_blocks:
+  - final_model
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: dt_trainer
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - preprocessing_data
+  - model_selection
+  uuid: dt_trainer
+- all_upstream_blocks_executed: true
+  color: teal
+  configuration: {}
+  downstream_blocks:
+  - final_model
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: ridgee_trainer
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - preprocessing_data
+  - model_selection
+  uuid: ridgee_trainer
+- all_upstream_blocks_executed: false
+  color: yellow
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: final_model
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - lasso_trainer
+  - knn_trainer
+  - rf_trainer
+  - dt_trainer
+  - ridgee_trainer
+  uuid: final_model
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: data_exporters/load_intopostgres.py
+    file_source:
+      path: data_exporters/load_intopostgres.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_intoPostgres
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - preprocessing_data
+  uuid: load_intopostgres
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-01-30 16:59:55.077875+00:00'
+data_integration: null
+description: Train multiple models, save cleaned data. Check the markdown cell in
+  the pipeline.
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: training models
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: training_models
+variables:
+  export_data: 'no'
+  selected_models:
+  - dt
+  - knn
+variables_dir: /home/src/mage_data/[training]
+widgets: []

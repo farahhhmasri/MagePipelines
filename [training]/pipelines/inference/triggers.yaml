@@ -1,0 +1,14 @@
+triggers:
+- description: null
+  envs: []
+  last_enabled_at: 2025-02-07 17:55:06.174934
+  name: create_predictions
+  pipeline_uuid: inference
+  schedule_interval: null
+  schedule_type: api
+  settings: null
+  sla: null
+  start_time: 2025-02-05 19:48:00
+  status: active
+  token: e40a25717d114dc490126c815b472d4c
+  variables: {}

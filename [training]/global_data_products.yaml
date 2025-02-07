@@ -1,0 +1,9 @@
+best_model_after_training:
+  object_type: pipeline
+  object_uuid: training_models
+  outdated_after:
+    months: 2
+  repo_path: /home/src/[training]
+  settings:
+    final_model:
+      partitions: 1
